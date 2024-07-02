@@ -1,0 +1,16 @@
+name: Percy
+on: push
+jobs:
+  lint:
+    name: Percy
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 21
+          architecture: x64
+      - run: yarn install
+      - run: yarn build-storybook
+      - run: yarn visual
